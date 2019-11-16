@@ -1,21 +1,23 @@
-require './config/environment'
+require_relative 'config/environment'
 
 class App < Sinatra::Base
-
   get '/' do
     erb :super_hero
   end
 
   post '/teams' do
-    @team = Team.new(params[:team])
-
-    params[:team][:members].each do |details|
-      Member.new(details)
+    @team_name = params[:team][:name]
+    @team_motto = params[:team][:motto]
+    @hero_name = []
+    @hero_power = []
+    @hero_bio = []
+    @team_members = params[:team][:members]
+    @team_members.each do |hero, attrib|
+      @hero_name << attrib[:name]
+      @hero_power << attrib[:power]
+      @hero_bio << attrib[:bio]
     end
-
-    @members = Member.all
 
     erb :team
   end
-
 end
