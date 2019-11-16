@@ -1,25 +1,11 @@
-<!DOCTYPE html>
+<h1><%= @team_name %></h1>
+<h2>Team Motto: <%= @team_motto %></h2>
 
-<html>
-  <head>
-    <title>Super Hero Teams</title>
-  </head>
-
-  <body>
-    <h1>Super Hero Teams</h1>
-    <div class="team">
-      <h3><%= @team.name %></h3><br>
-      <h4>Team Motto: <%= @team.motto %></h4><br>
-    </div><br>
-
-    <h1>Team Members</h1>
-    <div class="members">
-      <% @members.each do |hero| %>
-        <h3>Hero Name: <%= hero.name %></h3><br>
-        <h3>Hero Power: <%= hero.power %></h3><br>
-        <h3>Hero Bio: <%= hero.bio %></h3><br>
-    </div><br>
-    <% end %>
-
-  </body>
-</html>
+<% @team_members.each.with_index do |hero, index| %>
+  <h2>Hero Name: <%= @hero_name[index] %></h2>
+  <p>
+    Hero power: <%= @hero_power[index] %>
+    <br>
+    Hero biography: <%= @hero_bio[index] %>
+  </p>
+<% end %>
