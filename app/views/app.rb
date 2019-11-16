@@ -3,7 +3,7 @@ require './config/environment'
 class App < Sinatra::Base
 
   get '/' do
-    erb :'/super_hero'
+    erb :super_hero
   end
 
   post '/teams' do
@@ -12,6 +12,7 @@ class App < Sinatra::Base
     params[:team][:members].each do |details|
       Member.new(details)
     end
+
     @members = Member.all
 
     erb :team
